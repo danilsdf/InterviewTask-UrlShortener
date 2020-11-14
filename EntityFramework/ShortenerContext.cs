@@ -9,11 +9,12 @@ namespace ShortenerUrl.EntityFramework
 {
     public class ShortenerContext : DbContext
     {
+
         public ShortenerContext(DbContextOptions<ShortenerContext> options)
             : base(options)
         {
             Database.EnsureCreated();
         }
-        public DbSet<FileModel> Files { get; set; }
+        public DbSet<Url> Urls { get; set; }
     }
 }

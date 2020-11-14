@@ -7,23 +7,40 @@ using Microsoft.AspNetCore.Mvc;
 using ShortenerUrl.EntityFramework;
 using Microsoft.AspNetCore.Hosting;
 using ShortenerUrl.Models;
+using ShortenerUrl.Helper;
 
 namespace ShortenerUrl.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ShortenerContext _context;
+        private readonly Shortener _shortener;
         private readonly IWebHostEnvironment _environment;
+        private readonly List<string> AllExtensions = new List<string>() { ".png",".jpg",
+            ".svg",".pdf",".gif", ".heic", ".heif","webp"/*,".ai",".fig",".sketch"*/ };
 
         public HomeController(ShortenerContext context, IWebHostEnvironment environment)
         {
             _context = context;
             _environment = environment;
+            _shortener = new Shortener(context);
         }
 
-        public IActionResult Index()
+        public IActionResult Index(string Error = null)
         {
-            return View(_context.Files.ToList());
+            ViewBag.Error = Error;
+            return View(_context.Urls.ToList());
+        }
+
+        [HttpGet("{strurl}")]
+        public ActionResult GetPage(string strurl)
+        {
+            Url url = _context.Urls.Where(w=>w.ShortUrl == strurl).FirstOrDefault();
+            if(url is null)
+            {
+                return RedirectToAction(nameof(Index), new { Error = "Cannot find a file" });
+            }
+            return Redirect(url.FullUrl);
         }
 
         [HttpPost]
@@ -32,62 +49,38 @@ namespace ShortenerUrl.Controllers
             if (fileviewmodel != null)
             {
                 string wwrootPath = _environment.WebRootPath;
-
+                var urls = _context.Urls.ToList();
                 var Extension = Path.GetExtension(fileviewmodel.File.FileName);
 
-                var RelativeImagePath = "UploadedFiles/" + fileviewmodel.Name + Extension;
-
-                var AbsImagePath = Path.Combine(wwrootPath, RelativeImagePath);
-
-                using (var filestream = new FileStream(AbsImagePath, FileMode.Create))
+                if (AllExtensions.Contains(Extension.ToLower()))
                 {
-                    fileviewmodel.File.CopyTo(filestream);
+                    var RelativeImagePath = "UploadedFiles/" + fileviewmodel.Name + Extension;
+
+                    var AbsImagePath = Path.Combine(wwrootPath, RelativeImagePath);
+
+                    using (var filestream = new FileStream(AbsImagePath, FileMode.Create))
+                    {
+                        fileviewmodel.File.CopyTo(filestream);
+                    }
+
+                    if (!urls.Exists(url => url.FullUrl == RelativeImagePath))
+                    {
+                        Url mainurl = new Url
+                        {
+                            FullUrl = RelativeImagePath,
+                            Extension = Extension,
+                            ShortUrl = _shortener.GetUrl()
+                        };
+                        _context.Urls.Add(mainurl);
+                        _context.SaveChanges();
+                    }
                 }
-                FileModel filemodel = new FileModel { Name = fileviewmodel.Name, Extension = Extension, Path = RelativeImagePath };
-                _context.Files.Add(filemodel);
-                _context.SaveChanges();
+                else
+                {
+                    return RedirectToAction(nameof(Index), new { Error = "Incorrect extension"});
+                }
             }
             return RedirectToAction(nameof(Index));
         }
-
-        //[HttpPost]
-        //public async Task<IActionResult> AddFile(IFormFile file)
-        //{
-        //    if (file != null)
-        //    {
-        //        string Path = "/UploadedFiles/" + file.FileName;
-
-        //        using var filestream = new FileStream(_environment.WebRootPath + Path, FileMode.Create);
-        //        await file.CopyToAsync(filestream);
-
-        //        FileModel filemodel = new FileModel { Name = file.FileName, Path = Path };
-        //        _context.Files.Add(filemodel);
-        //        _context.SaveChanges();
-
-        //    }
-        //    return RedirectToAction("Index");
-
-        //}
-
-        //[HttpPost]
-        //public async Task<IActionResult> AddFile(IFormFileCollection files)
-        //{
-        //    foreach (var file in files)
-        //    {
-        //        if (file != null)
-        //        {
-        //            string Path = "/UploadedFiles" + file.FileName;
-
-        //            using var filestream = new FileStream(_environment.WebRootPath + Path, FileMode.Create);
-        //            await file.CopyToAsync(filestream);
-
-        //            FileModel filemodel = new FileModel { Name = file.FileName, Path = Path };
-        //            _context.Files.Add(filemodel);
-        //            _context.SaveChanges();
-
-        //        }
-        //    }
-        //    return RedirectToAction("Index");
-        //}
     }
 }

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "k/Sva/m8d2JqU7PgaPlIvHm6dQV7gfg9kxuik2kKXtTmMIAoMI//4zynZQ/ZPjHklEbIKNjCEUE/GWBzZHmteQ==",
+  "dgSpecHash": "oFWR5BvjyebqKylkjRAWYzm3QSl7LjylZWN1XqHqSfuEHak/YLhpFAKG/PilYrsrqu9pIOg/ud8gocRQ8pPC+g==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Олег\\source\\repos\\ShortenerUrl\\ShortenerUrl.csproj",
+  "projectFilePath": "C:\\Shortener\\ShortenerUrl.csproj",
   "expectedPackageFiles": [
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
     "C:\\Users\\Олег\\.nuget\\packages\\microsoft.data.sqlclient\\2.0.1\\microsoft.data.sqlclient.2.0.1.nupkg.sha512",

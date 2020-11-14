@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Олег\\source\\repos\\ShortenerUrl\\ShortenerUrl.csproj": {}
+    "C:\\Shortener\\ShortenerUrl.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Олег\\source\\repos\\ShortenerUrl\\ShortenerUrl.csproj": {
+    "C:\\Shortener\\ShortenerUrl.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Олег\\source\\repos\\ShortenerUrl\\ShortenerUrl.csproj",
+        "projectUniqueName": "C:\\Shortener\\ShortenerUrl.csproj",
         "projectName": "ShortenerUrl",
-        "projectPath": "C:\\Users\\Олег\\source\\repos\\ShortenerUrl\\ShortenerUrl.csproj",
+        "projectPath": "C:\\Shortener\\ShortenerUrl.csproj",
         "packagesPath": "C:\\Users\\Олег\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Олег\\source\\repos\\ShortenerUrl\\obj\\",
+        "outputPath": "C:\\Shortener\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
