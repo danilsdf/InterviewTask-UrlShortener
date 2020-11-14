@@ -1,0 +1,26 @@
+﻿@model IEnumerable<ShortenerUrl.Models.FileModel>
+
+@{
+    ViewBag.Title = "Добавление пользователя";
+}
+<form asp-action="Create" asp-controller="Home" method="post" enctype="multipart/form-data">
+    <p>
+        <label>Имя</label>
+        <input name="Name" class="form-control" />
+    </p>
+    <p>
+        <label>Аватар</label>
+        <input name="File" type="file" class="form-control" />
+    </p>
+    <p>
+        <input type="submit" value="Добавить" />
+    </p>
+</form>
+<h3>Все пользователи</h3>
+@foreach (var p in Model)
+{
+<div>
+    <h4>@p.Name</h4>
+    <p><img style='width:80px; height:60px;'src="@Url.Content(p.Path)" /></p>
+</div>
+}
