@@ -49,23 +49,6 @@ namespace ShortenerApi.Controllers
             {
                 return BadRequest();
             }
-            //Byte[] b;
-            //HttpResponseMessage response;
-            //switch (url.Extension)
-            //{
-            //    case ".img":
-            //    case ".png":
-            //    case ".jpg": 
-            //    case ".gif":
-            //        b = System.IO.File.ReadAllBytes(@$"{url.FullUrl}");
-            //        return File(b, "image/jpg/gif");
-            //    case: ".pdf": response = new HttpResponseMessage(HttpStatusCode.OK);
-            //        FileStream fileStream = File.OpenRead("FileName.pdf");
-            //        response.Content = new StreamContent(fileStream);
-            //        response.Content.Headers.ContentType = new MediaTypeHeaderValue("application/pdf");
-
-            //        return response;
-            //}
             Byte[] b = System.IO.File.ReadAllBytes(@$"{url.FullUrl}");          
             if(url.Extension == ".pdf")
             {
