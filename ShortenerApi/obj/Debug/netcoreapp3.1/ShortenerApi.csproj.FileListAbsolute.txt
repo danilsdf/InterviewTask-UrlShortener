@@ -1,6 +1,5 @@
 C:\Users\Олег\source\repos\ShortenerApi\ShortenerApi\bin\Debug\netcoreapp3.1\appsettings.Development.json
 C:\Users\Олег\source\repos\ShortenerApi\ShortenerApi\bin\Debug\netcoreapp3.1\appsettings.json
-C:\Users\Олег\source\repos\ShortenerApi\ShortenerApi\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
 C:\Users\Олег\source\repos\ShortenerApi\ShortenerApi\bin\Debug\netcoreapp3.1\ShortenerApi.exe
 C:\Users\Олег\source\repos\ShortenerApi\ShortenerApi\obj\Debug\netcoreapp3.1\ShortenerApi.csprojAssemblyReference.cache
 C:\Users\Олег\source\repos\ShortenerApi\ShortenerApi\obj\Debug\netcoreapp3.1\ShortenerApi.AssemblyInfoInputs.cache
@@ -72,3 +71,4 @@ C:\Users\Олег\source\repos\ShortenerApi\ShortenerApi\bin\Debug\netcoreapp3.1
 C:\Users\Олег\source\repos\ShortenerApi\ShortenerApi\bin\Debug\netcoreapp3.1\Shotener-server\tsconfig.json
 C:\Users\Олег\source\repos\ShortenerApi\ShortenerApi\bin\Debug\netcoreapp3.1\Shotener-server\tsconfig.spec.json
 C:\Users\Олег\source\repos\ShortenerApi\ShortenerApi\bin\Debug\netcoreapp3.1\Shotener-server\tslint.json
+C:\Users\Олег\source\repos\ShortenerApi\ShortenerApi\obj\Debug\netcoreapp3.1\scopedcss\bundle\ShortenerApi.styles.css
