@@ -14,11 +14,6 @@ Host the image path on a CDN like S3 or store its data in local database like My
 
 Use unreserved alphanumeric characters for the shortened URI (e.g., app.io/A18fhsH)
 
-The endpoint for the generated URI should serve HTML that web scrapers can easily digest,
-  e.g. write tags for the Open Graph Protocol (http://ogp.me/) and Search Engines like Google, DuckDuckGo
-
-Host on free services like Netlify, Serverless.com, Heroku, or AWS
-
 ## Appearance:
 Use a simple, attractive design and logo: https://logomaster.ai
 
